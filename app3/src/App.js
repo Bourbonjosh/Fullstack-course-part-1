@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
+
 const Button = (props) => (
   <button onClick={props.handleClick}>
     {props.text}
   </button>
 );
-
 
 
 const App = () => {
@@ -19,21 +19,20 @@ const App = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.',
     'The only way to go fast, is to go well.'
   ];
-
   const [selected, setSelected] = useState(0);
   const [voteArray, setVoteArray] = useState([0,0,0,0,0,0,0,0]);
+  
+  const maxVoteIndex = voteArray.indexOf(Math.max(...voteArray));
 
   const handleVote = () => {
     const copyVoteArray = [...voteArray];
     copyVoteArray[selected]++;
     setVoteArray(copyVoteArray);
-  }
-
+  };
   const handleNext = () => {
     const rnIndex = Math.floor(Math.random() * 8);
-    console.log("selected Index :",rnIndex);
     setSelected(rnIndex);
-  }
+  };  
 
   return (
     <div>
@@ -44,6 +43,11 @@ const App = () => {
       <br/>
       <Button handleClick={handleVote} text={'vote'} />
       <Button handleClick={handleNext} text={'next anecdote'} />
+      <br/>
+      <h1>Anecdote with most Votes</h1>
+      {anecdotes[maxVoteIndex]}
+      <br/>
+      has {voteArray[maxVoteIndex]} votes
     </div>
   )
 }
