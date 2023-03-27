@@ -6,10 +6,11 @@ const Button = (props) => (
   </button>
 )
 
-const Statdisplay = (props) => (
-  <div>
-    {props.text} {props.value} {props.suffix}
-  </div>
+const StatisticLine = (props) => (
+  <tr>
+    <td>{props.text}</td> 
+    <td>{props.value} {props.suffix}</td>
+  </tr>
 )
 
 const Statistics = (props) => {
@@ -31,13 +32,17 @@ const Statistics = (props) => {
 
   return (
     <div>
-      <h1>statistics</h1>
-      <Statdisplay text={"good"} value={props.good} suffix = "" />
-      <Statdisplay text={"neutral"} value={props.neutral} suffix = "" />
-      <Statdisplay text={"bad"} value={props.bad} suffix = "" />
-      <Statdisplay text={"all"} value={all} suffix = "" />
-      <Statdisplay text={"average"} value={average} suffix = "" />
-      <Statdisplay text={"positive"} value={positive} suffix = "%" />
+      <h1>statistics</h1>      
+      <table>
+        <tbody>
+          <StatisticLine text={"good"} value={props.good} suffix = "" />
+          <StatisticLine text={"neutral"} value={props.neutral} suffix = "" />
+          <StatisticLine text={"bad"} value={props.bad} suffix = "" />
+          <StatisticLine text={"all"} value={all} suffix = "" />
+          <StatisticLine text={"average"} value={average} suffix = "" />
+          <StatisticLine text={"positive"} value={positive} suffix = "%" />
+        </tbody>
+      </table>      
     </div>
   )
 }
