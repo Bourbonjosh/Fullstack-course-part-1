@@ -15,7 +15,6 @@ const StatisticLine = (props) => (
 
 const Statistics = (props) => {
 
-  console.log('Statistics properties', props);
   const all = props.good + props.neutral + props.bad;
   const average = (props.good - props.bad) / all;
   const positive = (props.good / all) * 100;
