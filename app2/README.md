@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# This is the source code for Bourbonjosh's app for exercises 1.6 to 1.11
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
