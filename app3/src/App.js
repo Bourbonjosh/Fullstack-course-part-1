@@ -1,5 +1,13 @@
 import { useState } from 'react'
 
+const Button = (props) => (
+  <button onClick={props.handleClick}>
+    {props.text}
+  </button>
+);
+
+
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -10,13 +18,32 @@ const App = () => {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.',
     'The only way to go fast, is to go well.'
-  ]
-   
-  const [selected, setSelected] = useState(0)
+  ];
+
+  const [selected, setSelected] = useState(0);
+  const [voteArray, setVoteArray] = useState([0,0,0,0,0,0,0,0]);
+
+  const handleVote = () => {
+    const copyVoteArray = [...voteArray];
+    copyVoteArray[selected]++;
+    setVoteArray(copyVoteArray);
+  }
+
+  const handleNext = () => {
+    const rnIndex = Math.floor(Math.random() * 8);
+    console.log("selected Index :",rnIndex);
+    setSelected(rnIndex);
+  }
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {anecdotes[selected]}
+      <br/>
+      has {voteArray[selected]} votes
+      <br/>
+      <Button handleClick={handleVote} text={'vote'} />
+      <Button handleClick={handleNext} text={'next anecdote'} />
     </div>
   )
 }
